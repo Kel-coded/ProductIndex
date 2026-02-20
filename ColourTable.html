@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Colours</title>
+
+</head>
+<body>
+<h1>Colours</h1>
+
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Colours</title>
+<style>
+body {
+	text-align:center;
+	font-family:Verdana, sans-serif;
+	background:#f0f0f0;
+	padding:50px;
+}
+input {
+	padding:10px;
+	font-size:16px;
+	margin-bottom:20px;
+	width:250px;
+}
+table {
+	margin:auto;
+	border-collapse: collapse;
+	width:60%;
+}
+th, td {
+	border:1px solid #333;
+	padding:10px;
+	text-align:left;
+}
+th {
+	background-color:#51D6DD;
+	color:white;
+}
+tr:nth-child(even) {
+	background-color:#e0e0e0;
+}
+a {
+	text-decoration:none;
+	color:#51D6DD;
+	font-size:18px;
+	}
+	
+</style>
+</head>
+<body>
+
+<p><a href="index.html">⬅ Back to Home</a></p>
+
+<input type="text" id="searchInput" placeholder="Search by Name or ID">
+
+<table id="dataTable">
+<thead>
+<tr>
+<th>ID</th>
+<th>Item Name</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>1</td><td>Red</td></tr>
+<tr><td>2</td><td>Blue</td></tr>
+<tr><td>3</td><td>Green</td></tr>
+<tr><td>4</td><td>Yellow</td></tr>
+<tr><td>5</td><td>Purple</td></tr>
+<tr><td>6</td><td>Pink</td></tr>
+<tr><td>7</td><td>Clear</td></tr>
+<tr><td>8</td><td>Flesh</td></tr>
+<tr><td>9</td><td>Brown</td></tr>
+<tr><td>10</td><td>Multi</td></tr>
+<tr><td>11</td><td>silver</td></tr>
+<tr><td>12</td><td>Animal Print</td></tr>
+<tr><td>13</td><td>Black</td></tr>
+<tr><td>14</td><td>Chrome</td></tr>
+<tr><td>15</td><td>Rose</td></tr>
+<tr><td>16</td><td>Gold</td></tr>
+<tr><td>17</td><td>Lilac</td></tr>
+<tr><td>18</td><td>Bronze</td></tr>
+<tr><td>19</td><td>Light Blue</td></tr>
+<tr><td>20</td><td>Light Pink</td></tr>
+
+
+
+</tbody>
+</table>
+
+<script>
+const searchInput = document.getElementById("searchInput");
+const table = document.getElementById("dataTable").getElementsByTagName("tbody")[0];
+
+searchInput.addEventListener("keyup", function() {
+	const filter = this.value.toLowerCase();
+	for (let i = 0; i < table.rows.length; i++) {
+		const id = table.rows[i].cells[0].textContent.toLowerCase();
+		const name = table.rows[i].cells[1].textContent.toLowerCase();
+		if (id.includes(filter) || name.includes(filter)) {
+			table.rows[i].style.display = "";
+		} else {
+			table.rows[i].style.display = "none";
+		}
+	}
+});
+
+
+</script>
+
+</body>
+</html>
+
+
