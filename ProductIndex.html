@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Index</title>
+<style>
+/* Your existing button styles */
+.myButtonMix {
+	background-color:#51D6DD;
+	border-radius:10px;
+	border:1px solid #ffffff;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Verdana;
+	font-size:28px;
+    font-weight:bold;
+	padding:10px 13px;
+	text-decoration:none;
+	margin:5px;
+	transition: 0.3s;
+}
+.myButtonMix:hover {
+	background:linear-gradient(to bottom, #ff1900 5%, #ff3f0f 100%);
+	background-color:#FF470F;
+	transform: scale(1.1);
+}
+.myButtonMix:active {
+	position:relative;
+	top:1px;
+}
+body {
+	text-align:center;
+	font-family:Verdana;
+	background: #f0f0f0;
+	padding:50px;
+}
+</style>
+</head>
+<body>
+
+<h1>Product Index</h1>
+
+
+<a href="ColourTable.html" class="myButtonMix">Colours</a>
+<a href="FlavourTable.html" class="myButtonMix">Flavours</a>
+<a href="IngredientTable.html" class="myButtonMix">Ingredients</a>
+<a href="MaterialTable.html" class="myButtonMix">Materials</a>
+<a href="SizeTable.html" class="myButtonMix">Sizes</a>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Colours</title>
+<style>
+
+	
+</style>
+</head>
+<body>
+
+<script>
+const searchInput = document.getElementById("searchInput");
+const table = document.getElementById("dataTable").getElementsByTagName("tbody")[0];
+
+searchInput.addEventListener("keyup", function() {
+	const filter = this.value.toLowerCase();
+	for (let i = 0; i < table.rows.length; i++) {
+		const id = table.rows[i].cells[0].textContent.toLowerCase();
+		const name = table.rows[i].cells[1].textContent.toLowerCase();
+		if (id.includes(filter) || name.includes(filter)) {
+			table.rows[i].style.display = "";
+		} else {
+			table.rows[i].style.display = "none";
+		}
+	}
+});
+
+
+
+</script>
+
+</body>
+</html>
