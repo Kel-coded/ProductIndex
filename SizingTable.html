@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Size Tables</title>
+<style>
+/* Your button styles */
+.myButtonMix {
+	background-color:#51D6DD;
+	border-radius:10px;
+	border:1px solid #ffffff;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Verdana;
+	font-size:28px;
+    font-weight:bold;
+	padding:10px 13px;
+	text-decoration:none;
+	margin:5px;
+	transition: 0.3s;
+}
+.myButtonMix:hover {
+	background:linear-gradient(to bottom, #ff1900 5%, #ff3f0f 100%);
+	background-color:#FF470F;
+	transform: scale(1.1);
+}
+.myButtonMix:active {
+	position:relative;
+	top:1px;
+}
+
+/* Existing body/table styles */
+body {
+	text-align:center;
+	font-family:Verdana, sans-serif;
+	background:#f0f0f0;
+	padding:50px;
+}
+input {
+	padding:10px;
+	font-size:16px;
+	margin-bottom:20px;
+	width:250px;
+}
+table {
+	margin:auto;
+	border-collapse: collapse;
+	width:60%;
+}
+th, td {
+	border:1px solid #333;
+	padding:10px;
+	text-align:left;
+}
+th {
+	background-color:#51D6DD;
+	color:white;
+}
+tr:nth-child(even) {
+	background-color:#e0e0e0;
+}
+a {
+	text-decoration:none;
+	color:#51D6DD;
+	font-size:18px;
+}
+tr:hover {
+    background-color: #ff190065;
+    cursor: pointer;
+}
+
+/* Table containers hidden by default */
+.table-container {
+	display: none;
+	margin-top: 20px;
+}
+</style>
+</head>
+<body>
+
+<p><a href="index.html">⬅ Back to Home</a></p>
+
+<!-- Buttons -->
+<div>
+	<button class="myButtonMix" onclick="showTable('lingerie', this)">Lingerie</button>
+	<button class="myButtonMix" onclick="showTable('cm', this)">CM & Inches</button>
+	<button class="myButtonMix" onclick="showTable('mm', this)">MMs & Oz</button>
+</div>
+
+<!-- Lingerie Table -->
+<div id="lingerie" class="table-container">
+	<input type="text" class="search-box" placeholder="Search by Name or ID" onkeyup="searchTable(this)">
+	<table>
+	<thead>
+	<tr>
+	<th>ID</th>
+	<th>Sizes</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr><td>2</td><td>X-Small</td></tr>
+	<tr><td>3</td><td>Small</td></tr>
+	<tr><td>4</td><td>Medium</td></tr>
+	<tr><td>5</td><td>Large</td></tr>
+	<tr><td>6</td><td>X-Large</td></tr>
+	<tr><td>7</td><td>Small/Medium</td></tr>
+	<tr><td>8</td><td>Medium/Large</td></tr>
+	<tr><td>9</td><td>Large/X-Large</td></tr>
+	<tr><td>10</td><td>X-Large/X2-Large</td></tr>
+	<tr><td>11</td><td>X2-Large/X3-Large</td></tr>
+	<tr><td>12</td><td>1X</td></tr>
+	<tr><td>13</td><td>2X</td></tr>
+	<tr><td>14</td><td>3X</td></tr>
+	<tr><td>15</td><td>4X</td></tr>
+	<tr><td>16</td><td>5X</td></tr>
+	<tr><td>17</td><td>6X</td></tr>
+	<tr><td>18</td><td>1X/2X</td></tr>
+	<tr><td>19</td><td>3X/4X</td></tr>
+	<tr><td>20</td><td>OS/XL</td></tr>
+	<tr><td>21</td><td>OS</td></tr>
+	</tbody>
+	</table>
+</div>
+
+<!-- CM & Inches Table -->
+<div id="cm" class="table-container">
+	<input type="text" class="search-box" placeholder="Search by measurement..." onkeyup="searchTable(this)">
+	<table>
+	<thead>
+	<tr>
+	<th>CM</th>
+	<th>Inches</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr><td>10 cm</td><td>3.94 in</td></tr>
+	<tr><td>20 cm</td><td>7.87 in</td></tr>
+	<tr><td>30 cm</td><td>11.81 in</td></tr>
+	<tr><td>40 cm</td><td>15.75 in</td></tr>
+	<tr><td>50 cm</td><td>19.69 in</td></tr>
+	</tbody>
+	</table>
+</div>
+
+<!-- MMs & Oz Table -->
+<div id="mm" class="table-container">
+	<input type="text" class="search-box" placeholder="Search by measurement..." onkeyup="searchTable(this)">
+	<table>
+	<thead>
+	<tr>
+	<th>MM</th>
+	<th>Ounces</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr><td>100 mm</td><td>3.5 oz</td></tr>
+	<tr><td>200 mm</td><td>7 oz</td></tr>
+	<tr><td>300 mm</td><td>10.5 oz</td></tr>
+	<tr><td>400 mm</td><td>14 oz</td></tr>
+	<tr><td>500 mm</td><td>17.5 oz</td></tr>
+	</tbody>
+	</table>
+</div>
+
+<script>
+// Toggle tables
+function showTable(id, button) {
+	const tables = document.querySelectorAll('.table-container');
+	tables.forEach(t => t.style.display = 'none');
+
+	const buttons = document.querySelectorAll('.myButtonMix');
+	buttons.forEach(btn => btn.classList.remove('active'));
+
+	document.getElementById(id).style.display = 'block';
+	button.classList.add('active');
+}
+
+// Search function for each table
+function searchTable(input) {
+	const filter = input.value.toLowerCase();
+	const table = input.nextElementSibling;
+	const rows = table.getElementsByTagName("tr");
+
+	for (let i = 1; i < rows.length; i++) {
+		const rowText = rows[i].textContent.toLowerCase();
+		rows[i].style.display = rowText.includes(filter) ? "" : "none";
+	}
+}
+</script>
+
+</body>
+</html>
