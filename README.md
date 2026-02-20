@@ -1,2 +1,0 @@
-# ProductIndex
-Testing
